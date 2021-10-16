@@ -24,12 +24,9 @@ namespace WindowsFormsApp1
         private int h;
         private int j;
         private string writePath = @"test.txt";
-
+        private double progressBar;
         private int countTask = 0;
         private int countStash = 0;
-        private int terminalTasks1 = 0;
-        private int terminalTasks2 = 0;
-        private int terminalTasks3 = 0;
         private bool flagStop = false;
         private List<Terminal> terminals = new List<Terminal>();
         EVM evm = new EVM();
@@ -62,14 +59,11 @@ namespace WindowsFormsApp1
                 {
                     countStash = 0;
                     countTask = 0;
-                    terminalTasks1 = 0;
-                    terminalTasks2 = 0;
-                    terminalTasks3 = 0;
-
                     label16.Text = "В работе...";
                     textBox19.Text = "";
 
                     timer1.Start();
+                    timer2.Start();
                     await Task.Run(() =>
                     {
                         Start();
@@ -113,7 +107,7 @@ namespace WindowsFormsApp1
             evm = new EVM(t4);
             terminals = new List<Terminal> { new Terminal(t1, M), new Terminal(t2, M), new Terminal(t3, M) };
             fileWrite("Время,с. Число_поставленных_задач Состояние_первого_терминала Состояние_второго_терминала Состояние_третьего_терминала" +
-                    " Количество_решенных_задач_1_терминалом Количество_решенных_задач_2_терминалом Количество_решенных_задач_3_терминалом");
+                    " Количество_решенных_задач Количество_задач_в_очереди");
             for (j = 3; j < sutki; j += h)
             {
                 /*Thread.Sleep(1);*/
@@ -142,7 +136,6 @@ namespace WindowsFormsApp1
                                     if (workOver <= 0)
                                     {
 
-                                        terminalTasks1++;
                                         countTask++;
                                     }
                                     else
@@ -173,7 +166,6 @@ namespace WindowsFormsApp1
                                     evm.timeReset(t4);
                                     if (workOver <= 0)
                                     {
-                                        terminalTasks2++;
                                         countTask++;
                                     }
                                     else
@@ -202,7 +194,6 @@ namespace WindowsFormsApp1
                                     evm.timeReset(t4);
                                     if (workOver <= 0)
                                     {
-                                        terminalTasks3++;
                                         countTask++;
                                     }
                                     else
@@ -294,7 +285,6 @@ namespace WindowsFormsApp1
                     count++;
                     if (terminal.Task == null)
                     {
-                        kTask = count;
                         var task = new Zadacha(N);
                         terminal.Task = task;
                     }
@@ -303,31 +293,29 @@ namespace WindowsFormsApp1
                         evm.stash.Add(new Zadacha(N));
                         countStash++;
                     }
-                    terminal.interval = 30;
+                    terminal.interval = t1;
                 }
             }
         }
 
         private void sendMessage(int kTask)
         {
-            switch (kTask)
+            if (terminals.Count() > 0)
             {
-                case 0:
+                if (terminals[0].Task != null && terminals[0].interval != 0 && j % terminals[0].interval == 0)
+                {
                     pictureBox8.Visible = true;
-                    pictureBox9.Visible = false;
-                    pictureBox10.Visible = false;
-                    break;
-                case 1:
-                    pictureBox8.Visible = false;
+                }
+                if (terminals[1].Task != null && terminals[1].interval != 0 && j % terminals[1].interval == 0)
+                {
                     pictureBox9.Visible = true;
-                    pictureBox10.Visible = false;
-                    break;
-                case 2:
-                    pictureBox8.Visible = false;
-                    pictureBox9.Visible = false;
+                }
+                if (terminals[2].Task != null && terminals[2].interval != 0 && j % terminals[2].interval == 0)
+                {
                     pictureBox10.Visible = true;
-                    break;
+                }
             }
+
         }
 
         private void sendMessage()
@@ -350,7 +338,7 @@ namespace WindowsFormsApp1
                         string state1 = k == 1 ? "Активен" : "Не_активен";
                         string state2 = k == 2 ? "Активен" : "Не_активен";
                         string state3 = k == 3 ? "Активен" : "Не_активен";
-                        sw.WriteLine($"{j} {countTask + countStash} {state1} {state2} {state3} {terminalTasks1} {terminalTasks2} {terminalTasks3}");
+                        sw.WriteLine($"{j} {countTask + countStash} {state1} {state2} {state3} {countTask} {countStash}");
                     }
                     else
                     {
@@ -380,12 +368,11 @@ namespace WindowsFormsApp1
         {
             RadioBtnActivated(k);
             sendMessage(kTask);
+            textBox16.Text = (((float)j * 100) / sutki).ToString();
+
             textBox19.Text = j.ToString();
             textBox7.Text = countTask.ToString();
             textBox8.Text = countStash.ToString();
-            textBox16.Text = terminalTasks1.ToString();
-            textBox17.Text = terminalTasks2.ToString();
-            textBox18.Text = terminalTasks3.ToString();
             if (flagStop)
             {
                 RadioRemove();
@@ -395,6 +382,10 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Работа завершена успехом");
                 flagStop = false;
             }
+        }
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            sendMessage();
         }
 
         private void label13_Click(object sender, EventArgs e)
@@ -418,6 +409,21 @@ namespace WindowsFormsApp1
         }
 
         private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label18_Click(object sender, EventArgs e)
         {
 
         }
