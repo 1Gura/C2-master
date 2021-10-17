@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,7 +20,6 @@ namespace WindowsFormsApp1
         private int h;
         private int j;
         private string writePath = @"test.txt";
-        private double progressBar;
         private int countTask = 0;
         private int countStash = 0;
         private bool flagStop = false;
@@ -32,7 +27,8 @@ namespace WindowsFormsApp1
         EVM evm = new EVM();
         int k = 1;
         int kTask = 0;
-
+        private int delay = 0;
+        int avarage = 0;
         public Form1()
         {
             InitializeComponent();
@@ -110,7 +106,10 @@ namespace WindowsFormsApp1
                     " Количество_решенных_задач Количество_задач_в_очереди");
             for (j = 3; j < sutki; j += h)
             {
-                /*Thread.Sleep(1);*/
+                if (Int32.TryParse(textBox16.Text, out delay))
+                {
+                    Thread.Sleep(delay);
+                }
 
                 setTasks();
                 if (terminals[0].Task != null || terminals[1].Task != null || terminals[2].Task != null)
@@ -221,11 +220,14 @@ namespace WindowsFormsApp1
                         terminals[k - 1].Task = evm.stash.FirstOrDefault();
                     }
                 }
+                avarage += (countTask + countStash) / h;
                 fileWrite();
             }
             if (j >= sutki)
             {
                 flagStop = true;
+                avarage = avarage / sutki;
+                
                 return;
             }
         }
@@ -285,8 +287,7 @@ namespace WindowsFormsApp1
                     count++;
                     if (terminal.Task == null)
                     {
-                        var task = new Zadacha(N);
-                        terminal.Task = task;
+                        terminal.Task = new Zadacha(N);
                     }
                     else
                     {
@@ -368,8 +369,12 @@ namespace WindowsFormsApp1
         {
             RadioBtnActivated(k);
             sendMessage(kTask);
-            textBox16.Text = (((float)j * 100) / sutki).ToString();
-
+            progressBar1.Value = (j * 100) / sutki;
+            //Длина очереди неоконченных заданий
+            /*if (h != 0)
+            {
+                textBox17.Text = ((countTask + countStash) / h).ToString();
+            }*/
             textBox19.Text = j.ToString();
             textBox7.Text = countTask.ToString();
             textBox8.Text = countStash.ToString();
@@ -378,6 +383,8 @@ namespace WindowsFormsApp1
                 RadioRemove();
                 sendMessage();
                 timer1.Stop();
+                textBox17.Text = avarage.ToString();
+                fileWrite("Длина очереди неоконченных заданий = " + avarage);
                 label16.Text = "Работа завершена успехом";
                 MessageBox.Show("Работа завершена успехом");
                 flagStop = false;
@@ -386,46 +393,6 @@ namespace WindowsFormsApp1
         private void timer2_Tick(object sender, EventArgs e)
         {
             sendMessage();
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox13_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox14_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox9_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label22_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label18_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

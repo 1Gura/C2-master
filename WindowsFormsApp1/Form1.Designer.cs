@@ -68,9 +68,13 @@ namespace WindowsFormsApp1
             this.label20 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -84,16 +88,15 @@ namespace WindowsFormsApp1
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(128, 20);
             this.textBox8.TabIndex = 3;
-            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(816, 230);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(141, 13);
+            this.label8.Size = new System.Drawing.Size(151, 13);
             this.label8.TabIndex = 2;
-            this.label8.Text = "Количество задач в стеше";
+            this.label8.Text = "Количество задач в очереди";
             // 
             // textBox9
             // 
@@ -102,7 +105,6 @@ namespace WindowsFormsApp1
             this.textBox9.Size = new System.Drawing.Size(128, 20);
             this.textBox9.TabIndex = 5;
             this.textBox9.Text = "30";
-            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
             // label9
             // 
@@ -196,7 +198,6 @@ namespace WindowsFormsApp1
             this.textBox13.Size = new System.Drawing.Size(128, 20);
             this.textBox13.TabIndex = 19;
             this.textBox13.Text = "3";
-            this.textBox13.TextChanged += new System.EventHandler(this.textBox13_TextChanged);
             // 
             // label13
             // 
@@ -206,7 +207,6 @@ namespace WindowsFormsApp1
             this.label13.Size = new System.Drawing.Size(235, 13);
             this.label13.TabIndex = 18;
             this.label13.Text = "M (кол-во символов обрабатываемых в сек.)";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // textBox14
             // 
@@ -215,7 +215,6 @@ namespace WindowsFormsApp1
             this.textBox14.Size = new System.Drawing.Size(128, 20);
             this.textBox14.TabIndex = 17;
             this.textBox14.Text = "60";
-            this.textBox14.TextChanged += new System.EventHandler(this.textBox14_TextChanged);
             // 
             // label14
             // 
@@ -362,7 +361,6 @@ namespace WindowsFormsApp1
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Активен";
             this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -383,7 +381,6 @@ namespace WindowsFormsApp1
             this.label22.Size = new System.Drawing.Size(67, 13);
             this.label22.TabIndex = 47;
             this.label22.Text = "Терминал 3";
-            this.label22.Click += new System.EventHandler(this.label22_Click);
             // 
             // label21
             // 
@@ -411,31 +408,11 @@ namespace WindowsFormsApp1
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(172, 316);
+            this.label17.Location = new System.Drawing.Point(652, 505);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(97, 13);
             this.label17.TabIndex = 51;
             this.label17.Text = "Типа прогесс бар";
-            // 
-            // textBox16
-            // 
-            this.textBox16.Location = new System.Drawing.Point(273, 313);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox16.Size = new System.Drawing.Size(75, 20);
-            this.textBox16.TabIndex = 52;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label18.Location = new System.Drawing.Point(354, 317);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(20, 16);
-            this.label18.TabIndex = 53;
-            this.label18.Text = "%";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
             // label19
             // 
@@ -448,12 +425,68 @@ namespace WindowsFormsApp1
             this.label19.Text = "сек.";
             this.label19.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(407, 460);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(569, 31);
+            this.progressBar1.TabIndex = 55;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label18.Location = new System.Drawing.Point(366, 317);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(38, 16);
+            this.label18.TabIndex = 58;
+            this.label18.Text = "в мс.";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBox16
+            // 
+            this.textBox16.Location = new System.Drawing.Point(285, 313);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBox16.Size = new System.Drawing.Size(75, 20);
+            this.textBox16.TabIndex = 57;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(221, 317);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(58, 13);
+            this.label23.TabIndex = 56;
+            this.label23.Text = "Задержка";
+            // 
+            // textBox17
+            // 
+            this.textBox17.Location = new System.Drawing.Point(220, 475);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBox17.Size = new System.Drawing.Size(128, 20);
+            this.textBox17.TabIndex = 59;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(10, 478);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(204, 13);
+            this.label24.TabIndex = 60;
+            this.label24.Text = "Длина очереди неоконченных заданий";
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1150, 612);
-            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.textBox17);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.textBox16);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.label19);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
@@ -551,10 +584,14 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox textBox17;
     }
 }
 
