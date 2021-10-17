@@ -32,11 +32,6 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            this.Draw();
-        }
-        public void Draw()
-        {
-
         }
 
         private async void button2_ClickAsync(object sender, EventArgs e)
@@ -134,13 +129,11 @@ namespace WindowsFormsApp1
                                     evm.timeReset(t4);
                                     if (workOver <= 0)
                                     {
-
                                         countTask++;
                                     }
                                     else
                                     {
                                         evm.stash.Add(terminals[0].Task);
-
                                         countStash++;
                                     }
                                     terminals[0].Task = null;
@@ -273,9 +266,6 @@ namespace WindowsFormsApp1
             radioButton3.Checked = false;
 
         }
-        /// <summary>
-        ///Тут должны поступать задания на каждый терминал с учётом времени t1, t2, t3
-        /// </summary>
         private void setTasks()
         {
             var count = 0;
@@ -326,8 +316,6 @@ namespace WindowsFormsApp1
             pictureBox10.Visible = false;
         }
 
-
-
         private void fileWrite(string str = "")
         {
             try
@@ -353,12 +341,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void button3_Click(object sender, EventArgs e)
         {
             Close();
@@ -370,11 +352,6 @@ namespace WindowsFormsApp1
             RadioBtnActivated(k);
             sendMessage(kTask);
             progressBar1.Value = (j * 100) / sutki;
-            //Длина очереди неоконченных заданий
-            /*if (h != 0)
-            {
-                textBox17.Text = ((countTask + countStash) / h).ToString();
-            }*/
             textBox19.Text = j.ToString();
             textBox7.Text = countTask.ToString();
             textBox8.Text = countStash.ToString();
