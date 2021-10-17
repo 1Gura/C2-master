@@ -52,7 +52,7 @@ namespace WindowsFormsApp1
                     countTask = 0;
                     label16.Text = "В работе...";
                     textBox19.Text = "";
-
+                    textBox17.Text = "";
                     timer1.Start();
                     timer2.Start();
                     await Task.Run(() =>
@@ -345,7 +345,6 @@ namespace WindowsFormsApp1
         {
             Close();
         }
-
 
         private void timer1_Tick(object sender, EventArgs e)
         {
