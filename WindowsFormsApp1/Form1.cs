@@ -53,8 +53,10 @@ namespace WindowsFormsApp1
         }
 
 
-        private void WorkTerminal(int workOver, int timeOver)
+        private void WorkTerminal()
         {
+            var workOver = 0;
+            var timeOver = 0;
             if (terminals[k - 1].taskStash.Any())
             {
                 workOver = (evm.Work(terminals[k - 1], h));
@@ -74,123 +76,22 @@ namespace WindowsFormsApp1
                     {
                         countStash++;
                     }
-                    terminals[k - 1].Task = null;
-                    k = 2;
+                    var task = terminals[k - 1].taskStash.FirstOrDefault();
+                    terminals[k - 1].taskStash.Remove(task);
+                    SwitchedTerminals();
                 }
             }
             else if (timeOver <= 0)
             {
-
+                SwitchedTerminals();
             }
 
-            private void WorkEVM()
-            {
-                int workOver = 0;
-                int timeOver = 0;
-                switch (k)
-                {
-                    case 1:
-                        if (terminals[0].taskStash.Any())
-                        {
-                            workOver = (evm.Work(terminals[0], h));
-                            timeOver = evm.time -= h;
-                            if (workOver <= 0 || timeOver <= 0)
-                            {
-                                evm.timeReset(t4);
-                                if (workOver <= 0)
-                                {
-                                    countTask++;
-                                }
-                                else if (terminals[0].taskStash.FirstOrDefault().N < N)
-                                {
-                                    evm.unfinishedStash.Add(terminals[0].Task);
-                                    countStashUnfinished++;
-                                }
-                                else
-                                {
-                                    evm.stash.Add(terminals[0].Task);
-                                    countStash++;
-                                }
-                                terminals[0].Task = null;
-                                k = 2;
-                            }
-                        }
-                        else
-                        {
-                            k = 2;
-                            continue;
+            
+        }
 
-                        }
-                        break;
-                    case 2:
-                        if (terminals[1].Task != null)
-                        {
-                            workOver = (evm.Work(terminals[1], h));
-                            timeOver = evm.time -= h;
-                            if (workOver <= 0 || timeOver <= 0)
-                            {
-
-                                evm.timeReset(t4);
-                                if (workOver <= 0)
-                                {
-                                    countTask++;
-                                }
-                                else if (terminals[1].Task.N < N)
-                                {
-                                    evm.unfinishedStash.Add(terminals[1].Task);
-                                    countStashUnfinished++;
-                                }
-                                else
-                                {
-                                    evm.stash.Add(terminals[1].Task);
-                                    countStash++;
-                                }
-                                terminals[1].Task = null;
-                                k = 3;
-                            }
-                        }
-                        else
-                        {
-                            k = 3;
-                            continue;
-                        }
-                        break;
-                    case 3:
-                        if (terminals[2].Task != null)
-                        {
-                            workOver = (evm.Work(terminals[2], h));
-                            timeOver = evm.time -= h;
-                            if (workOver <= 0 || timeOver <= 0)
-                            {
-
-                                evm.timeReset(t4);
-                                if (workOver <= 0)
-                                {
-                                    countTask++;
-                                }
-                                else if (terminals[2].Task.N < N)
-                                {
-                                    evm.unfinishedStash.Add(terminals[2].Task);
-                                    countStashUnfinished++;
-                                }
-                                else
-                                {
-                                    evm.stash.Add(terminals[2].Task);
-                                    countStash++;
-                                }
-                                terminals[2].Task = null;
-                                k = 1;
-                            }
-                        }
-                        else
-                        {
-                            k = 1;
-                            continue;
-
-                        }
-                        break;
-                }
-            }
+        private void WorkEVM()
+        {
+            
         }
 
         private async void button2_ClickAsync(object sender, EventArgs e)
@@ -273,16 +174,11 @@ namespace WindowsFormsApp1
                     /// то просто переходим к след. терминалу(или если ее нет),
                     /// иначе, если закончилось отведенное время поместим недоделанную задачу в СТЭШ
                     /// и перейдем к след. терминалу
-
-
+                    WorkTerminal();
                 }
                 else
                 {
                     EVMDontWorkSec++;
-                    if (evm.stash.Count() > 0)
-                    {
-                        terminals[k - 1].Task = evm.stash.FirstOrDefault();
-                    }
                 }
                 avarage += countStashUnfinished;
                 fileWrite();
@@ -295,17 +191,6 @@ namespace WindowsFormsApp1
                 return;
             }
         }
-
-        private void setTerminal(bool workOver)
-        {
-            evm.timeReset();
-            if (!workOver)
-            {
-                evm.stash.Add(terminals[1].Task);
-            }
-            terminals[1].Task = null;
-        }
-
         private void RadioBtnActivated(int k)
         {
             switch (k)
@@ -385,9 +270,9 @@ namespace WindowsFormsApp1
                 {
                     if (str == "")
                     {
-                        string state1 = (k == 1 && (terminals[0].Task != null || terminals[1].Task != null || terminals[2].Task != null)) ? "Активен" : "Не_активен";
-                        string state2 = (k == 2 && (terminals[0].Task != null || terminals[1].Task != null || terminals[2].Task != null)) ? "Активен" : "Не_активен";
-                        string state3 = (k == 3 && (terminals[0].Task != null || terminals[1].Task != null || terminals[2].Task != null)) ? "Активен" : "Не_активен";
+                        string state1 = (k == 1 && (terminals[0].taskStash.Any() || terminals[1].taskStash.Any() || terminals[2].taskStash.Any())) ? "Активен" : "Не_активен";
+                        string state2 = (k == 2 && (terminals[0].taskStash.Any() || terminals[1].taskStash.Any() || terminals[2].taskStash.Any())) ? "Активен" : "Не_активен";
+                        string state3 = (k == 3 && (terminals[0].taskStash.Any() || terminals[1].taskStash.Any() || terminals[2].taskStash.Any())) ? "Активен" : "Не_активен";
                         sw.WriteLine($"{j} {countTask + countStash} {state1} {state2} {state3} {countTask} {countStash}");
                     }
                     else
