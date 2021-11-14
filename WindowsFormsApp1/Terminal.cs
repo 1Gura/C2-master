@@ -18,8 +18,11 @@ namespace WindowsFormsApp1
         public int M = 3;
 
 
-        public Zadacha Task { get; set; }
-        
+        /// <summary>
+        /// Буффер
+        /// </summary>
+        public List<Zadacha> taskStash = new List<Zadacha>();
+
 
         public Terminal(int timeWork = 30, int M = 3)
         {
