@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 
 namespace WindowsFormsApp1
@@ -26,8 +27,7 @@ namespace WindowsFormsApp1
         /// <returns></returns>
         public int Work(Terminal terminal, int h)
         {
-
-            return terminal.Task.N -= terminal.M * h;
+            return terminal.taskStash.FirstOrDefault().N -= terminal.M * h;
         }
 
         public void timeReset(int time = 30)

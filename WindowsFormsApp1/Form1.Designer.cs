@@ -80,6 +80,12 @@ namespace WindowsFormsApp1
             this.label26 = new System.Windows.Forms.Label();
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
+            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.textBox23 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -99,9 +105,9 @@ namespace WindowsFormsApp1
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(816, 208);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(151, 13);
+            this.label8.Size = new System.Drawing.Size(269, 13);
             this.label8.TabIndex = 2;
-            this.label8.Text = "Количество задач в очереди";
+            this.label8.Text = "Количество задач в очереди(пока не используется)";
             // 
             // textBox9
             // 
@@ -288,9 +294,9 @@ namespace WindowsFormsApp1
             // pictureBox2
             // 
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(407, 21);
+            this.pictureBox2.Location = new System.Drawing.Point(410, 21);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(632, 421);
+            this.pictureBox2.Size = new System.Drawing.Size(737, 421);
             this.pictureBox2.TabIndex = 37;
             this.pictureBox2.TabStop = false;
             // 
@@ -307,7 +313,7 @@ namespace WindowsFormsApp1
             // pictureBox8
             // 
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(500, 173);
+            this.pictureBox8.Location = new System.Drawing.Point(511, 173);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(33, 29);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -318,7 +324,7 @@ namespace WindowsFormsApp1
             // pictureBox9
             // 
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(500, 218);
+            this.pictureBox9.Location = new System.Drawing.Point(511, 218);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(33, 29);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -329,7 +335,7 @@ namespace WindowsFormsApp1
             // pictureBox10
             // 
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(500, 264);
+            this.pictureBox10.Location = new System.Drawing.Point(511, 264);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(33, 32);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -413,7 +419,7 @@ namespace WindowsFormsApp1
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(652, 505);
+            this.label17.Location = new System.Drawing.Point(744, 494);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(97, 13);
             this.label17.TabIndex = 51;
@@ -434,7 +440,7 @@ namespace WindowsFormsApp1
             // 
             this.progressBar1.Location = new System.Drawing.Point(407, 460);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(569, 31);
+            this.progressBar1.Size = new System.Drawing.Size(740, 31);
             this.progressBar1.TabIndex = 55;
             // 
             // label18
@@ -487,9 +493,9 @@ namespace WindowsFormsApp1
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(816, 259);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(204, 13);
+            this.label25.Size = new System.Drawing.Size(322, 13);
             this.label25.TabIndex = 61;
-            this.label25.Text = "Кол-во неоконченных  задач в очереди";
+            this.label25.Text = "Кол-во неоконченных  задач в очереди(пока не используется)";
             // 
             // textBox18
             // 
@@ -524,9 +530,65 @@ namespace WindowsFormsApp1
             this.label27.TabIndex = 65;
             this.label27.Text = "%";
             // 
+            // textBox21
+            // 
+            this.textBox21.Location = new System.Drawing.Point(425, 173);
+            this.textBox21.Name = "textBox21";
+            this.textBox21.Size = new System.Drawing.Size(76, 20);
+            this.textBox21.TabIndex = 66;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(422, 248);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(79, 13);
+            this.label28.TabIndex = 67;
+            this.label28.Text = "Спец. очередь";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(422, 157);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(79, 13);
+            this.label29.TabIndex = 69;
+            this.label29.Text = "Спец. очередь";
+            // 
+            // textBox22
+            // 
+            this.textBox22.Location = new System.Drawing.Point(425, 218);
+            this.textBox22.Name = "textBox22";
+            this.textBox22.Size = new System.Drawing.Size(76, 20);
+            this.textBox22.TabIndex = 68;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(422, 202);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(79, 13);
+            this.label30.TabIndex = 71;
+            this.label30.Text = "Спец. очередь";
+            this.label30.Click += new System.EventHandler(this.label30_Click);
+            // 
+            // textBox23
+            // 
+            this.textBox23.Location = new System.Drawing.Point(425, 264);
+            this.textBox23.Name = "textBox23";
+            this.textBox23.Size = new System.Drawing.Size(76, 20);
+            this.textBox23.TabIndex = 70;
+            this.textBox23.TextChanged += new System.EventHandler(this.textBox23_TextChanged);
+            // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(1150, 612);
+            this.ClientSize = new System.Drawing.Size(1193, 612);
+            this.Controls.Add(this.label30);
+            this.Controls.Add(this.textBox23);
+            this.Controls.Add(this.label29);
+            this.Controls.Add(this.textBox22);
+            this.Controls.Add(this.label28);
+            this.Controls.Add(this.textBox21);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.textBox20);
@@ -649,6 +711,12 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox textBox20;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox textBox21;
     }
 }
 

@@ -86,12 +86,12 @@ namespace WindowsFormsApp1
                 SwitchedTerminals();
             }
 
-            
+
         }
 
         private void WorkEVM()
         {
-            
+
         }
 
         private async void button2_ClickAsync(object sender, EventArgs e)
@@ -301,6 +301,13 @@ namespace WindowsFormsApp1
             textBox7.Text = countTask.ToString();
             textBox8.Text = countStash.ToString();
             textBox18.Text = countStashUnfinished.ToString();
+            if (terminals.Any())
+            {
+                textBox21.Text = terminals[0].taskStash.Count().ToString();
+                textBox22.Text = terminals[1].taskStash.Count().ToString();
+                textBox23.Text = terminals[2].taskStash.Count().ToString();
+            }
+
             if (flagStop)
             {
                 RadioRemove();
@@ -317,6 +324,16 @@ namespace WindowsFormsApp1
         private void timer2_Tick(object sender, EventArgs e)
         {
             sendMessage();
+        }
+
+        private void textBox23_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label30_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
