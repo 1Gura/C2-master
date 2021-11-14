@@ -16,6 +16,8 @@ namespace WindowsFormsApp1
         /// </summary>
         public List<Zadacha> stash = new List<Zadacha>();
 
+        public List<Zadacha> unfinishedStash = new List<Zadacha>();
+
         /// <summary>
         /// Количество символов оставшихся для обработки
         /// </summary>

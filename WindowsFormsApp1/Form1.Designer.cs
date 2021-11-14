@@ -75,6 +75,11 @@ namespace WindowsFormsApp1
             this.label23 = new System.Windows.Forms.Label();
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -84,7 +89,7 @@ namespace WindowsFormsApp1
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(819, 252);
+            this.textBox8.Location = new System.Drawing.Point(819, 230);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(128, 20);
             this.textBox8.TabIndex = 3;
@@ -92,7 +97,7 @@ namespace WindowsFormsApp1
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(816, 230);
+            this.label8.Location = new System.Drawing.Point(816, 208);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(151, 13);
             this.label8.TabIndex = 2;
@@ -266,7 +271,7 @@ namespace WindowsFormsApp1
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(819, 201);
+            this.textBox7.Location = new System.Drawing.Point(819, 179);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(128, 20);
             this.textBox7.TabIndex = 1;
@@ -274,7 +279,7 @@ namespace WindowsFormsApp1
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(816, 185);
+            this.label7.Location = new System.Drawing.Point(816, 163);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(152, 13);
             this.label7.TabIndex = 0;
@@ -285,7 +290,7 @@ namespace WindowsFormsApp1
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox2.Location = new System.Drawing.Point(407, 21);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(569, 421);
+            this.pictureBox2.Size = new System.Drawing.Size(632, 421);
             this.pictureBox2.TabIndex = 37;
             this.pictureBox2.TabStop = false;
             // 
@@ -402,7 +407,7 @@ namespace WindowsFormsApp1
             // 
             // timer2
             // 
-            this.timer2.Interval = 1000;
+            this.timer2.Interval = 989;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // label17
@@ -477,9 +482,56 @@ namespace WindowsFormsApp1
             this.label24.TabIndex = 60;
             this.label24.Text = "Длина очереди неоконченных заданий";
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(816, 259);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(204, 13);
+            this.label25.TabIndex = 61;
+            this.label25.Text = "Кол-во неоконченных  задач в очереди";
+            // 
+            // textBox18
+            // 
+            this.textBox18.Location = new System.Drawing.Point(819, 279);
+            this.textBox18.Name = "textBox18";
+            this.textBox18.Size = new System.Drawing.Size(128, 20);
+            this.textBox18.TabIndex = 62;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(10, 514);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(155, 13);
+            this.label26.TabIndex = 64;
+            this.label26.Text = "Степень загруженности ЭВМ";
+            // 
+            // textBox20
+            // 
+            this.textBox20.Location = new System.Drawing.Point(220, 511);
+            this.textBox20.Name = "textBox20";
+            this.textBox20.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBox20.Size = new System.Drawing.Size(128, 20);
+            this.textBox20.TabIndex = 63;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(354, 518);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(15, 13);
+            this.label27.TabIndex = 65;
+            this.label27.Text = "%";
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1150, 612);
+            this.Controls.Add(this.label27);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.textBox20);
+            this.Controls.Add(this.textBox18);
+            this.Controls.Add(this.label25);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.textBox17);
             this.Controls.Add(this.label18);
@@ -592,6 +644,11 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.Label label27;
     }
 }
 

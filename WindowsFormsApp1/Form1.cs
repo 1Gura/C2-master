@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
         private string writePath = @"test.txt";
         private int countTask = 0;
         private int countStash = 0;
+        private int countStashUnfinished = 0;
         private bool flagStop = false;
         private List<Terminal> terminals = new List<Terminal>();
         EVM evm = new EVM();
@@ -29,6 +30,7 @@ namespace WindowsFormsApp1
         int kTask = 0;
         private int delay = 0;
         int avarage = 0;
+        int EVMDontWorkSec = 0;
         public Form1()
         {
             InitializeComponent();
@@ -131,6 +133,11 @@ namespace WindowsFormsApp1
                                     {
                                         countTask++;
                                     }
+                                    else if (terminals[0].Task.N < N)
+                                    {
+                                        evm.unfinishedStash.Add(terminals[0].Task);
+                                        countStashUnfinished++;
+                                    }
                                     else
                                     {
                                         evm.stash.Add(terminals[0].Task);
@@ -160,6 +167,11 @@ namespace WindowsFormsApp1
                                     {
                                         countTask++;
                                     }
+                                    else if(terminals[1].Task.N < N)
+                                    {
+                                        evm.unfinishedStash.Add(terminals[1].Task);
+                                        countStashUnfinished++;
+                                    }
                                     else
                                     {
                                         evm.stash.Add(terminals[1].Task);
@@ -188,6 +200,11 @@ namespace WindowsFormsApp1
                                     {
                                         countTask++;
                                     }
+                                    else if(terminals[2].Task.N < N)
+                                    {
+                                        evm.unfinishedStash.Add(terminals[2].Task);
+                                        countStashUnfinished++;
+                                    }
                                     else
                                     {
                                         evm.stash.Add(terminals[2].Task);
@@ -208,19 +225,20 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
+                    EVMDontWorkSec++;
                     if (evm.stash.Count() > 0)
                     {
                         terminals[k - 1].Task = evm.stash.FirstOrDefault();
                     }
                 }
-                avarage += (countTask + countStash) / h;
+                avarage += countStashUnfinished;
                 fileWrite();
             }
             if (j >= sutki)
             {
                 flagStop = true;
                 avarage = avarage / sutki;
-                
+
                 return;
             }
         }
@@ -324,9 +342,9 @@ namespace WindowsFormsApp1
                 {
                     if (str == "")
                     {
-                        string state1 = k == 1 ? "Активен" : "Не_активен";
-                        string state2 = k == 2 ? "Активен" : "Не_активен";
-                        string state3 = k == 3 ? "Активен" : "Не_активен";
+                        string state1 = (k == 1 && (terminals[0].Task != null || terminals[1].Task != null || terminals[2].Task != null)) ? "Активен" : "Не_активен";
+                        string state2 = (k == 2 && (terminals[0].Task != null || terminals[1].Task != null || terminals[2].Task != null)) ? "Активен" : "Не_активен";
+                        string state3 = (k == 3 && (terminals[0].Task != null || terminals[1].Task != null || terminals[2].Task != null)) ? "Активен" : "Не_активен";
                         sw.WriteLine($"{j} {countTask + countStash} {state1} {state2} {state3} {countTask} {countStash}");
                     }
                     else
@@ -354,12 +372,14 @@ namespace WindowsFormsApp1
             textBox19.Text = j.ToString();
             textBox7.Text = countTask.ToString();
             textBox8.Text = countStash.ToString();
+            textBox18.Text = countStashUnfinished.ToString();
             if (flagStop)
             {
                 RadioRemove();
                 sendMessage();
                 timer1.Stop();
                 textBox17.Text = avarage.ToString();
+                textBox20.Text = ((float)(sutki - EVMDontWorkSec)/sutki * 100).ToString("0.0000");
                 fileWrite("Длина очереди неоконченных заданий = " + avarage);
                 label16.Text = "Работа завершена успехом";
                 MessageBox.Show("Работа завершена успехом");
