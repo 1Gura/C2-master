@@ -22,7 +22,6 @@ namespace WindowsFormsApp1
         private string writePath = @"test.txt";
         private int countTask = 0;
         private int countStash = 0;
-        private int countStashUnfinished = 0;
         private bool flagStop = false;
         private List<Terminal> terminals = new List<Terminal>();
         EVM evm = new EVM();
@@ -70,7 +69,7 @@ namespace WindowsFormsApp1
                     }
                     else if (terminals[k - 1].taskStash.FirstOrDefault().N < N)
                     {
-                        countStashUnfinished++;
+                        countStash++;
                     }
                     else
                     {
@@ -80,18 +79,24 @@ namespace WindowsFormsApp1
                     terminals[k - 1].taskStash.Remove(task);
                     SwitchedTerminals();
                 }
+                else if (timeOver <= 0)
+                {
+                    countStash++;
+                    SetTaskInStash();
+                    SwitchedTerminals();
+                }
             }
             else if (timeOver <= 0)
             {
                 SwitchedTerminals();
             }
-
-
         }
 
-        private void WorkEVM()
+        private void SetTaskInStash()
         {
-
+            var task = terminals[k - 1].taskStash.FirstOrDefault();
+            evm.stash.Add(task);
+            terminals[k - 1].taskStash.Remove(task);
         }
 
         private async void button2_ClickAsync(object sender, EventArgs e)
@@ -110,6 +115,7 @@ namespace WindowsFormsApp1
                 {
                     countStash = 0;
                     countTask = 0;
+                    EVMDontWorkSec = 0;
                     label16.Text = "В работе...";
                     textBox19.Text = "";
                     textBox17.Text = "";
@@ -136,20 +142,18 @@ namespace WindowsFormsApp1
         {
             try
             {
-                t1 = Int32.Parse(textBox9.Text);
-                t2 = Int32.Parse(textBox10.Text);
-                t3 = Int32.Parse(textBox11.Text);
-                t4 = Int32.Parse(textBox12.Text);
-                N = Int32.Parse(textBox14.Text);
-                M = Int32.Parse(textBox13.Text);
-                h = Int32.Parse(textBox15.Text);
-
+                t1 = int.Parse(textBox9.Text);
+                t2 = int.Parse(textBox10.Text);
+                t3 = int.Parse(textBox11.Text);
+                t4 = int.Parse(textBox12.Text);
+                N = int.Parse(textBox14.Text);
+                M = int.Parse(textBox13.Text);
+                h = int.Parse(textBox15.Text);
             }
             catch (Exception)
             {
                 MessageBox.Show("Проверьте правильность введенных данных!");
             }
-
 
             using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
             {
@@ -161,7 +165,7 @@ namespace WindowsFormsApp1
                     " Количество_решенных_задач Количество_задач_в_очереди");
             for (j = 3; j < sutki; j += h)
             {
-                if (Int32.TryParse(textBox16.Text, out delay))
+                if (int.TryParse(textBox16.Text, out delay))
                 {
                     Thread.Sleep(delay);
                 }
@@ -179,8 +183,14 @@ namespace WindowsFormsApp1
                 else
                 {
                     EVMDontWorkSec++;
+                    var task = evm.stash.FirstOrDefault();
+                    if (task != null)
+                    {
+                        terminals[k - 1].taskStash.Add(task);
+                        WorkTerminal();
+                    }
                 }
-                avarage += countStashUnfinished;
+                avarage += countStash;
                 fileWrite();
             }
             if (j >= sutki)
@@ -299,8 +309,7 @@ namespace WindowsFormsApp1
             progressBar1.Value = (j * 100) / sutki;
             textBox19.Text = j.ToString();
             textBox7.Text = countTask.ToString();
-            textBox8.Text = countStash.ToString();
-            textBox18.Text = countStashUnfinished.ToString();
+            textBox8.Text = evm.stash.Count().ToString();
             if (terminals.Any())
             {
                 textBox21.Text = terminals[0].taskStash.Count().ToString();

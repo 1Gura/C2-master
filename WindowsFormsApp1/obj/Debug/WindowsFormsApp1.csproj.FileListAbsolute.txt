@@ -41,10 +41,11 @@ C:\Users\anore\OneDrive\Рабочий стол\C2-master\WindowsFormsApp1\obj\D
 E:\4 курс\C2-master\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
 E:\4 курс\C2-master\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
 E:\4 курс\C2-master\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
-E:\4 курс\C2-master\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
 E:\4 курс\C2-master\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
 E:\4 курс\C2-master\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 E:\4 курс\C2-master\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
 E:\4 курс\C2-master\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 E:\4 курс\C2-master\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 E:\4 курс\C2-master\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+E:\4 курс\C2-master\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+E:\4 курс\C2-master\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.SuggestedBindingRedirects.cache
