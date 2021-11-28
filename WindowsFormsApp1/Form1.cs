@@ -11,15 +11,16 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         private int sutki = 24 * 60 * 60;
-        private int t1;
-        private int t2;
-        private int t3;
-        private int t4;
+        private double t1;
+        private double t2;
+        private double t3;
+        private double t4;
         private int N;
         private int M;
         private int h;
         private int j;
         private string writePath = @"test.txt";
+        private string writePath2 = @"test2.txt";
         private int countTask = 0;
         private int countStash = 0;
         private bool flagStop = false;
@@ -51,11 +52,19 @@ namespace WindowsFormsApp1
             }
         }
 
+        static double GetT1() => Generator.ExponentialDistributionFunction(0.03);
+
+        static double GetT2() => Generator.ExponentialDistributionFunction(0.02);
+
+        static double GetT3() => Generator.ExponentialDistributionFunction(0.04);
+
+        static double GetT4() => Generator.NormalDistributionFunction(5, 60);
+
 
         private void WorkTerminal()
         {
-            var workOver = 0;
-            var timeOver = 0;
+            var workOver = 0.0;
+            var timeOver = 0.0;
             if (terminals[k - 1].taskStash.Any())
             {
                 workOver = (evm.Work(terminals[k - 1], h));
@@ -142,10 +151,10 @@ namespace WindowsFormsApp1
         {
             try
             {
-                t1 = int.Parse(textBox9.Text);
-                t2 = int.Parse(textBox10.Text);
-                t3 = int.Parse(textBox11.Text);
-                t4 = int.Parse(textBox12.Text);
+                //t1 = int.Parse(textBox9.Text);
+                //t2 = int.Parse(textBox10.Text);
+                //t3 = int.Parse(textBox11.Text);
+                //t4 = int.Parse(textBox12.Text);
                 N = int.Parse(textBox14.Text);
                 M = int.Parse(textBox13.Text);
                 h = int.Parse(textBox15.Text);
@@ -159,6 +168,10 @@ namespace WindowsFormsApp1
             {
                 sw.WriteLine("");
             }
+            using (StreamWriter sw = new StreamWriter(writePath2, false, System.Text.Encoding.Default))
+            {
+                sw.WriteLine("");
+            }
             evm = new EVM(t4);
             terminals = new List<Terminal> { new Terminal(t1, M), new Terminal(t2, M), new Terminal(t3, M) };
             fileWrite("Время,с. Число_поставленных_задач Состояние_первого_терминала Состояние_второго_терминала Состояние_третьего_терминала" +
@@ -169,6 +182,14 @@ namespace WindowsFormsApp1
                 {
                     Thread.Sleep(delay);
                 }
+                t1 = GetT1();
+                t2 = GetT2();
+                t3 = GetT3();
+                t4 = GetT4();
+                //using (StreamWriter sw = new StreamWriter(writePath2, true))
+                //{
+                //    sw.WriteLine(/*GetT1() + " " + GetT2() + " " + GetT3() + " " + */GetT4());
+                //}
 
                 setTasks();
                 if (terminals[0].taskStash.Any() || terminals[1].taskStash.Any() || terminals[2].taskStash.Any())
@@ -283,7 +304,7 @@ namespace WindowsFormsApp1
                         string state1 = (k == 1 && (terminals[0].taskStash.Any() || terminals[1].taskStash.Any() || terminals[2].taskStash.Any())) ? "Активен" : "Не_активен";
                         string state2 = (k == 2 && (terminals[0].taskStash.Any() || terminals[1].taskStash.Any() || terminals[2].taskStash.Any())) ? "Активен" : "Не_активен";
                         string state3 = (k == 3 && (terminals[0].taskStash.Any() || terminals[1].taskStash.Any() || terminals[2].taskStash.Any())) ? "Активен" : "Не_активен";
-                        sw.WriteLine($"{j} {countTask + countStash} {state1} {state2} {state3} {countTask} {countStash}");
+                        sw.WriteLine($"{j} {countTask + countStash} {state1} {state2} {state3} {countTask} {evm.stash.Count()}");
                     }
                     else
                     {

@@ -9,7 +9,7 @@ namespace WindowsFormsApp1
         /// <summary>
         /// время смены терминала = 30
         /// </summary>
-        public int time = 30;
+        public double time = 30;
 
 
         /// <summary>
@@ -28,12 +28,12 @@ namespace WindowsFormsApp1
             return terminal.taskStash.FirstOrDefault().N -= terminal.M * h;
         }
 
-        public void timeReset(int time = 30)
+        public void timeReset(double time = 30)
         {
             this.time = time;
         }
 
-        public EVM(int t4 = 30)
+        public EVM(double t4 = 30)
         {
             this.time = t4;
         }

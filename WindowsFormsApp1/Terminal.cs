@@ -11,7 +11,7 @@ namespace WindowsFormsApp1
         /// <summary>
         /// Время на обработку задачи в секундакх
         /// </summary>
-        public int interval = 30;
+        public double interval = 30;
         /// <summary>
         /// Количество символов обрабатываемых за секунду
         /// </summary>
@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
         public List<Zadacha> taskStash = new List<Zadacha>();
 
 
-        public Terminal(int timeWork = 30, int M = 3)
+        public Terminal(double timeWork = 30, int M = 3)
         {
             this.interval = timeWork;
             this.M = M;
