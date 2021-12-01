@@ -186,10 +186,10 @@ namespace WindowsFormsApp1
                 t2 = GetT2();
                 t3 = GetT3();
                 t4 = GetT4();
-                //using (StreamWriter sw = new StreamWriter(writePath2, true))
-                //{
-                //    sw.WriteLine(/*GetT1() + " " + GetT2() + " " + GetT3() + " " + */GetT4());
-                //}
+                using (StreamWriter sw = new StreamWriter(writePath2, true))
+                {
+                    sw.WriteLine(GetT1());
+                }
 
                 setTasks();
                 if (terminals[0].taskStash.Any() || terminals[1].taskStash.Any() || terminals[2].taskStash.Any())
