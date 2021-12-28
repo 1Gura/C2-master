@@ -1,0 +1,91 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\4 курс\\C2-master\\StationaryRandomProcessTest\\StationaryRandomProcessTest.csproj": {}
+  },
+  "projects": {
+    "E:\\4 курс\\C2-master\\StationaryRandomProcessTest\\StationaryRandomProcessTest.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\4 курс\\C2-master\\StationaryRandomProcessTest\\StationaryRandomProcessTest.csproj",
+        "projectName": "StationaryRandomProcessTest",
+        "projectPath": "E:\\4 курс\\C2-master\\StationaryRandomProcessTest\\StationaryRandomProcessTest.csproj",
+        "packagesPath": "C:\\Users\\Ilya\\.nuget\\packages\\",
+        "outputPath": "E:\\4 курс\\C2-master\\StationaryRandomProcessTest\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Ilya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "E:\\4 курс\\C2-master\\WindowsFormsApp1\\WindowsFormsApp1.csproj": {
+                "projectPath": "E:\\4 курс\\C2-master\\WindowsFormsApp1\\WindowsFormsApp1.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.12, 5.0.12]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\4 курс\\C2-master\\WindowsFormsApp1\\WindowsFormsApp1.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\4 курс\\C2-master\\WindowsFormsApp1\\WindowsFormsApp1.csproj",
+        "projectName": "WindowsFormsApp1",
+        "projectPath": "E:\\4 курс\\C2-master\\WindowsFormsApp1\\WindowsFormsApp1.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}

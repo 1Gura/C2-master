@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "StationaryRandomProcessTest/1.0.0": {
+        "dependencies": {
+          "WindowsFormsApp1": "1.0.0"
+        },
+        "runtime": {
+          "StationaryRandomProcessTest.dll": {}
+        }
+      },
+      "WindowsFormsApp1/1.0.0": {
+        "runtime": {
+          "WindowsFormsApp1.exe": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "StationaryRandomProcessTest/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WindowsFormsApp1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

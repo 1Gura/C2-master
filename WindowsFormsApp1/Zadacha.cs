@@ -29,9 +29,9 @@ namespace WindowsFormsApp1
             }
         }
 
-        public int N { get; set; }
+        public double N { get; set; }
 
-        public Zadacha(int N = 60)
+        public Zadacha(double N = 60)
         {
             this.N = N;
         }

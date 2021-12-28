@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
         /// <param name="terminal"></param>
         /// <param name="h"></param>
         /// <returns></returns>
-        public int Work(Terminal terminal, int h)
+        public double Work(Terminal terminal, int h)
         {
             return terminal.taskStash.FirstOrDefault().N -= terminal.M * h;
         }

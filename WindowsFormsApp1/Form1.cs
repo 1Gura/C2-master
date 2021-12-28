@@ -31,6 +31,27 @@ namespace WindowsFormsApp1
         private int delay = 0;
         int avarage = 0;
         int EVMDontWorkSec = 0;
+        static double lambda1 = 0.03;
+        static double lambda2 = 0.02;
+        static double lambda3 = 0.04;
+        static int Mn = 60;
+        static double sigma = 5;
+
+
+
+        static double GetT1() => Generator.ExponentialDistributionFunction(lambda1);
+
+        static double GetT2() => Generator.ExponentialDistributionFunction(lambda2);
+
+        static double GetT3() => Generator.ExponentialDistributionFunction(lambda3);
+
+        static double GetT4() => Generator.NormalDistributionFunction(sigma, Mn);
+
+        static readonly StationaryRandomProcess NormalProcessValueGenerator = new StationaryRandomProcess(
+            new double[] { 0.05355541672, 0.1258679265, 0.3421478267, 0.9296364597 }, 1, 10);
+
+
+
         public Form1()
         {
             InitializeComponent();
@@ -52,13 +73,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        static double GetT1() => Generator.ExponentialDistributionFunction(0.03);
-
-        static double GetT2() => Generator.ExponentialDistributionFunction(0.02);
-
-        static double GetT3() => Generator.ExponentialDistributionFunction(0.04);
-
-        static double GetT4() => Generator.NormalDistributionFunction(5, 60);
 
 
         private void WorkTerminal()
@@ -67,6 +81,7 @@ namespace WindowsFormsApp1
             var timeOver = 0.0;
             if (terminals[k - 1].taskStash.Any())
             {
+                terminals[k - 1].M = NormalProcessValueGenerator.GetNextValue();
                 workOver = (evm.Work(terminals[k - 1], h));
                 timeOver = evm.time -= h;
                 if (workOver <= 0)
@@ -188,7 +203,7 @@ namespace WindowsFormsApp1
                 t4 = GetT4();
                 using (StreamWriter sw = new StreamWriter(writePath2, true))
                 {
-                    sw.WriteLine(GetT1());
+                    sw.WriteLine(NormalProcessValueGenerator.GetNextValue());
                 }
 
                 setTasks();
